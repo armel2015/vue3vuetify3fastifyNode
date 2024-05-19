@@ -56,9 +56,54 @@ exemple
       return {
         transactions: [
           { id:1, text: 'Flower', amount: -19.99}
-        ]
+        ],
+        name:...,
+        anotherObject:...
       }
-    }
+    },
+    methods: newFunction();
   }
+</script>
+```
+
+<b>Composition API</b> less code to write
+
+fist way exemple
+
+```ts
+<script setup>
+   const transactions = [
+      { id: 1, text: 'Flower', amount: -19.99 },
+      { id: 2, text: 'Salary', amount: 299.97 }
+    ]
+</script>
+```
+second way exemple
+
+```ts
+<script>
+  export default {
+    setup() {
+      const transactions = [
+          { id:1, text: 'Flower', amount: -19.99}
+          { id:2, text: 'salary', amount: 2000}
+        ];
+      return {
+        transactions,
+        }
+    },
+  };
+</script>
+```
+How to use data (transactionList for instance) within another component using Composition API
+```ts
+<script setup>
+  import {defineProps} from 'vue';
+  const props = defineProps({
+    transactions:{
+      typ: Array,
+      required: true,
+    }
+  })
 </script>
 ```
