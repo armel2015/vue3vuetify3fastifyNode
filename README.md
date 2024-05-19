@@ -35,3 +35,13 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+### Nice to know
+
+when using <b>scoped</b> attr this help to target only the current component with css
+```ts
+<script scoped>
+
+</script>
+```
