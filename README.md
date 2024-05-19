@@ -45,3 +45,20 @@ when using <b>scoped</b> attr this help to target only the current component wit
 
 </script>
 ```
+<b>Pinia</b> is a state manager, intuitive store for vueJS used for lager applications
+
+<b>Option API</b> used to dynamically inject data
+exemple
+```ts
+<script>
+  export default {
+    data() {
+      return {
+        transactions: [
+          { id:1, text: 'Flower', amount: -19.99}
+        ]
+      }
+    }
+  }
+</script>
+```
