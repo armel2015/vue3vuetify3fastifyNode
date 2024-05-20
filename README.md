@@ -118,20 +118,8 @@ npm i vue-toastification@next
 <b>defineEmits</b> help to handle transaction when submitting a form
 
 ```ts
---- client
-<AddTransaction  @transactionSubmitted="handleTransactionSubmitted"/>
-<script>
-const handleTransactionSubmitted = (transactionData) => {
-  transactions.value.push({
-    id: generateUniqueId(),
-    text: transactionData.text,
-    amount: transactionData.amount
-  });
-  toast.success('Transaction added');
-};
-</script>
 
---- server
+--- server (emit an event)
 <form id="form" @submit.prevent="onSubmit">
 <script>
 const emit = defineEmits(['transactionSubmitted']);
@@ -146,5 +134,18 @@ const onSubmit = () => {
   };
   emit('transactionSubmitted', transactionData);
 }
+</script>
+
+--- client (listen, recieve and handle an event)
+<AddTransaction  @transactionSubmitted="handleTransactionSubmitted"/>
+<script>
+const handleTransactionSubmitted = (transactionData) => {
+  transactions.value.push({
+    id: generateUniqueId(),
+    text: transactionData.text,
+    amount: transactionData.amount
+  });
+  toast.success('Transaction added');
+};
 </script>
 ```
