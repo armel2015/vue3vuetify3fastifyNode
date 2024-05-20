@@ -115,3 +115,36 @@ Alert library
 ```bash
 npm i vue-toastification@next
 ```
+<b>defineEmits</b> help to handle transaction when submitting a form
+
+```ts
+--- client
+<AddTransaction  @transactionSubmitted="handleTransactionSubmitted"/>
+<script>
+const handleTransactionSubmitted = (transactionData) => {
+  transactions.value.push({
+    id: generateUniqueId(),
+    text: transactionData.text,
+    amount: transactionData.amount
+  });
+  toast.success('Transaction added');
+};
+</script>
+
+--- server
+<form id="form" @submit.prevent="onSubmit">
+<script>
+const emit = defineEmits(['transactionSubmitted']);
+const onSubmit = () => {
+  if(!text.value || !amount.value){
+    toast.error('Both fields must be filled');
+    return;
+  }
+  const transactionData = {
+    text: text.value,
+    amount: parseFloat(amount.value)
+  };
+  emit('transactionSubmitted', transactionData);
+}
+</script>
+```
