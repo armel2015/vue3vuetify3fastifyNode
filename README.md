@@ -109,3 +109,9 @@ How to use data (transactionList for instance) within another component using Co
 ```
 
 <b> Computed properties </b> is a way to add reactive and cache value
+
+
+Alert library
+```bash
+npm i vue-toastification@next
+```
