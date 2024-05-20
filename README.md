@@ -149,3 +149,17 @@ const handleTransactionSubmitted = (transactionData) => {
 };
 </script>
 ```
+
+<b>onMounted with localStorage</b> we can mount data from localstorage when using a component in vue. Each time we delete or add data we can update the item in the localstorage
+```ts
+import { ref, computed, onMounted } from 'vue';
+<script>
+onMounted(() => {
+  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+  if (savedTransactions) {
+    transactions.value = savedTransactions;
+  }
+})
+</script>
+
+```
